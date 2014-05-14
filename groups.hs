@@ -32,6 +32,10 @@ hpow p x | x`mod`p/=0  = 0
 pfact :: Integer -> [(Integer,Integer)]
 pfact x = [(p,hpow p x)|p<-(primes x),hpow p x /= 0]
 
+lpf :: Integer -> Integer
+lpf x | isprime x = x
+      | otherwise = lpf(x`div`(head(factors x)))
+
 
 totient :: Integer->Integer
 totient 1 = 1
